@@ -1,35 +1,50 @@
 package com.xpanxion.bookclub.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "books")
 public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column
-    private long id;
-
-    @Column
     private String title;
-    @Column
+
     private String author;
-    @Column
+
     private String genre;
-    @Column
-    private int year_pulished;
-    @Column
-    private int total_salse;
-    @Column
+
+    private int yearPublished;
+
+    private int totalSales;
+
     private double price;
-    @Column
+
     private String imageUrl;
 
     public Book(){
 
+    }
+
+    public Book(Long id, String title, String author, String genre, int yearPublished, int totalSales, double price, String imageUrl) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+        this.yearPublished = yearPublished;
+        this.totalSales = totalSales;
+        this.price = price;
+        this.imageUrl = imageUrl;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -56,20 +71,20 @@ public class Book {
         this.genre = genre;
     }
 
-    public int getYear_pulished() {
-        return year_pulished;
+    public int getYearPublished() {
+        return yearPublished;
     }
 
-    public void setYear_pulished(int year_pulished) {
-        this.year_pulished = year_pulished;
+    public void setYearPublished(int yearPublished) {
+        this.yearPublished = yearPublished;
     }
 
-    public int getTotal_salse() {
-        return total_salse;
+    public int getTotalSales() {
+        return totalSales;
     }
 
-    public void setTotal_salse(int total_salse) {
-        this.total_salse = total_salse;
+    public void setTotalSales(int totalSales) {
+        this.totalSales = totalSales;
     }
 
     public double getPrice() {
@@ -87,4 +102,5 @@ public class Book {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
 }
