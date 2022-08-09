@@ -1,4 +1,5 @@
 # BookClubBackend
 This repo is for the backend of a Book Club App using Java and Spring boot
 
-create database in MySQL called: bookclubdb
+# Setting Up 
+-create database in MySQL called: bookclubdb
