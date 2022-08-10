@@ -29,5 +29,27 @@ public class ClubController {
         club.setBook(book);
         return this.clubRepository.save(club);
     }
+    @GetMapping("/clubs/{id}")
+    public Club getClubById(@PathVariable Long id){
+        return this.clubRepository.findById(id).get();
+    }
+
+    @DeleteMapping("/clubs/{id}")
+    public void deleteClub(@PathVariable Long id ){
+        this.clubRepository.deleteById(id);
+        System.out.println("deleted");
+    }
+    @PutMapping("/books/{bookId}/clubs/{id}")
+    public Club updateClubById(@PathVariable Long id, @PathVariable Long bookId ,@RequestBody Club updatedClub){
+        Club clubDb = clubRepository.findById(id).get();
+        Book bookDb = bookRepository.findById(bookId).get();
+        clubDb.setName(updatedClub.getName());
+        clubDb.setMembers(updatedClub.getMembers());
+        clubDb.setMeetingTime(updatedClub.getMeetingTime());
+        clubDb.setBook(bookDb);
+
+
+        return this.clubRepository.save(clubDb);
+    }
 
 }

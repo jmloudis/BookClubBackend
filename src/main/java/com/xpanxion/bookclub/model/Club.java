@@ -15,6 +15,8 @@ public class Club implements Serializable
     private String name;
     private Integer members;
 
+    private String meetingTime;
+
 
     @ManyToOne
     @JoinColumn(name = "book_id")
@@ -22,10 +24,11 @@ public class Club implements Serializable
     public Club() {
     }
 
-    public Club(Long id, String name, Integer members) {
+    public Club(Long id, String name, Integer members, String meetingTime) {
         this.id = id;
         this.name = name;
         this.members = members;
+        this.meetingTime= meetingTime;
     }
 
     public Long getId() {
@@ -58,5 +61,13 @@ public class Club implements Serializable
 
     public void setBook(Book book) {
         this.book = book;
+    }
+
+    public String getMeetingTime() {
+        return meetingTime;
+    }
+
+    public void setMeetingTime(String meetingTime) {
+        this.meetingTime = meetingTime;
     }
 }
