@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(value = "http://localhost:4200")
 @RequestMapping("/api/v1")
+
 public class BookController {
     @Autowired
     private BookRepository bookRepository;
