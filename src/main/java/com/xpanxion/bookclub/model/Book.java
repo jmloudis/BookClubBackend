@@ -1,10 +1,12 @@
 package com.xpanxion.bookclub.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "books")
-public class Book {
+public class Book implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,11 +26,14 @@ public class Book {
 
     private String imageUrl;
 
+
+    @OneToMany(mappedBy = "book")
+    private List<Club> clubs;
     public Book(){
 
     }
 
-    public Book(Long id, String title, String author, String genre, int yearPublished, int totalSales, double price, String imageUrl) {
+    public Book(Long id, String title, String author, String genre, int yearPublished, int totalSales, double price, String imageUrl, List<Club> clubs) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -37,6 +42,7 @@ public class Book {
         this.totalSales = totalSales;
         this.price = price;
         this.imageUrl = imageUrl;
+        this.clubs = clubs;
     }
 
     public Long getId() {
@@ -103,4 +109,11 @@ public class Book {
         this.imageUrl = imageUrl;
     }
 
+    public List<Club> getClubs() {
+        return clubs;
+    }
+
+    public void setClubs(List<Club> clubs) {
+        this.clubs = clubs;
+    }
 }
