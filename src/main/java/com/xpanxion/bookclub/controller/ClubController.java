@@ -24,7 +24,7 @@ public class ClubController {
         return this.clubRepository.findAll();
     }
     @PostMapping("/books/{id}/clubs")
-    public Club createClub(@RequestBody Club club,@PathVariable Long id) {
+    public Club createClub(@RequestBody Club club, @PathVariable Long id) {
 
         Book book=this.bookRepository.findById(id).get();
         club.setBook(book);
@@ -48,7 +48,6 @@ public class ClubController {
         clubDb.setMembers(updatedClub.getMembers());
         clubDb.setMeetingTime(updatedClub.getMeetingTime());
         clubDb.setBook(bookDb);
-
 
         return this.clubRepository.save(clubDb);
     }

@@ -14,7 +14,6 @@ public class Club implements Serializable
     private Long id;
     private String name;
     private Integer members;
-
     private String meetingTime;
 
 
