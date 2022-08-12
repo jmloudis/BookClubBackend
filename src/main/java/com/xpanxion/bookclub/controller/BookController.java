@@ -24,15 +24,16 @@ public class BookController {
         return this.bookRepository.save(book);
     }
     @DeleteMapping("/books/{id}")
-    public void deleteBook(@PathVariable Long id ){
+    public void deleteBook(@PathVariable Long id){
         this.bookRepository.deleteById(id);
         System.out.println("deleted");
     }
-    @GetMapping("books/{id}")
+
+    @GetMapping("/books/{id}")
     public Book getByBookId(@PathVariable Long id){
         return this.bookRepository.findById(id).get();
     }
-    @PutMapping("books/{id}")
+    @PutMapping("/books/{id}")
     public Book updateBookById(@PathVariable Long id, @RequestBody Book updatedBook){
         Book bookDb = bookRepository.findById(id).get();
         bookDb.setAuthor(updatedBook.getAuthor());
