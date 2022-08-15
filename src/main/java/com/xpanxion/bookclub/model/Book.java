@@ -26,8 +26,7 @@ public class Book implements Serializable {
 
     private String imageUrl;
 
-
-    @OneToMany(mappedBy = "book")
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     private List<Club> clubs;
     public Book(){
 
